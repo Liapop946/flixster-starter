@@ -1,0 +1,67 @@
+/* MovieCard — a cozy little movie poster tile that glows on hover,
+   like a lit window in a city skyline at night. */
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: var(--card-surface); /* lighter purple so cards pop */
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 6px 18px rgba(8, 4, 24, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  /* warm glow, like a window lighting up */
+  box-shadow: 0 12px 28px rgba(8, 4, 24, 0.6),
+    0 0 18px rgba(180, 140, 255, 0.35);
+}
+
+.movie-card__poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  /* Fluid padding so cards breathe more on larger screens. */
+  padding: clamp(12px, 1.4vw, 18px) clamp(14px, 1.6vw, 20px);
+}
+
+.movie-card__title {
+  margin: 0;
+  /* Fluid type: scales up with the viewport for easier reading. */
+  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+  /* min-width:0 lets a long title shrink instead of pushing the rating off
+     the card; clamp to 2 lines with an ellipsis so it never overflows. */
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-card__rating {
+  flex-shrink: 0;
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+  font-weight: 700;
+  color: var(--amber); /* warm amber, like distant streetlight */
+  white-space: nowrap;
+}

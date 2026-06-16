@@ -1,0 +1,55 @@
+/* SearchBar — compact control row inside the header's top-right cluster. */
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.search-bar__input {
+  width: min(260px, 60vw);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  background-color: var(--plum-700);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.search-bar__input::placeholder {
+  color: var(--text-dim);
+}
+
+.search-bar__input:focus {
+  border-color: var(--border-strong);
+  box-shadow: 0 0 14px rgba(180, 140, 255, 0.35);
+}
+
+.search-bar__button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 10px;
+}
+
+.search-bar__button--secondary {
+  background-color: transparent;
+  border: 1px solid var(--border-soft);
+}
+
+.search-bar__button--secondary:hover {
+  background-color: var(--purple-500);
+}
+
+@media (max-width: 640px) {
+  .search-bar {
+    justify-content: stretch;
+  }
+
+  .search-bar__input {
+    flex: 1;
+    width: auto;
+  }
+}

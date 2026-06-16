@@ -1,0 +1,31 @@
+/* Sort — compact dropdown in the header's top-right control cluster. */
+.sort {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.sort__label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.sort__select {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text);
+  background-color: var(--plum-700);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sort__select:focus {
+  border-color: var(--border-strong);
+  box-shadow: 0 0 12px rgba(180, 140, 255, 0.3);
+}
