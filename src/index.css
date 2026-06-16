@@ -1,27 +1,54 @@
-/* Cozy city-skyline-at-night palette.
-   Deep purple/indigo night sky, warm amber "streetlight" + soft rose "neon"
-   as complementary accents. */
+/* Site palette: navy → lavender ramp.
+   #0b0b2f  #47589e  #656291  #978abf  #c1c5d0 */
 :root {
-  --night-900: #0a0618; /* deepest sky */
-  --night-800: #100a26;
-  --night-700: #1a1138; /* surfaces / modal */
-  --plum-700: #221640; /* deep twilight purple */
-  --plum-600: #2e1f56; /* chips, hovers */
-  --card-surface: #36246b; /* lighter, more saturated purple — cards/header */
-  --purple-500: #4a2f8a; /* primary button */
-  --purple-400: #6c4bc0; /* button hover */
-  --lilac-300: #c4a5ff; /* links / focus glow */
-  --lilac-200: #d6c7ff;
+  /* Backgrounds / deepest surfaces */
+  --night-900: #0b0b2f;
+  --night-800: #0b0b2f;
+  --night-700: #14143a; /* modal surface — #0b0b2f lifted toward the blue */
 
-  --text: #ede8ff;
-  --text-muted: #b9a9e6;
-  --text-dim: #9d8fc4;
+  /* Surfaces — cards, header (deepened versions of the palette blues for
+     a softer, easier-on-the-eyes look while raising text contrast) */
+  --plum-700: #2f3a68;
+  --plum-600: #45456a; /* chips, hovers */
+  --card-surface: #2f3a68; /* main surface — cards/header */
 
-  --amber: #ffd479; /* warm streetlight glow (rating) */
-  --rose: #ff9ec7; /* soft neon accent */
+  /* Interactive — buttons */
+  --btn: #2f3a68;
+  --btn-hover: #45456a;
+  /* Lighter lavender for the primary search button so it stands out from
+     the header surface instead of blending in. */
+  --btn-accent: #6f6aa3;
+  --btn-accent-hover: #847ec0;
 
-  --border-soft: rgba(150, 120, 220, 0.22);
-  --border-strong: rgba(196, 165, 255, 0.55);
+  /* Darker palette-derived tones for outlines + depth */
+  --ink-900: #05051a; /* darkest — borders & deep shadows */
+  --ink-800: #08082a; /* dark outline / shadow tint */
+
+  /* Accents / borders / glow */
+  --accent: #978abf;
+  --accent-soft: rgba(151, 138, 191, 0.55);
+  --pink-shadow: rgba(101, 98, 145, 0.5); /* soft palette-tone card shadow */
+  --lilac-300: #978abf; /* links / focus glow */
+  --lilac-200: #c1c5d0;
+
+  /* Text — softened off-white (less glare on the darker surfaces) */
+  --text: #dfe3ee; /* primary text */
+  --text-muted: #aab0c4; /* secondary text */
+  --text-dim: #8b85ab; /* placeholders only */
+
+  /* Highlights (kept on-palette) */
+  --amber: #eef1f7; /* rating */
+  --rose: #978abf; /* soft accent */
+
+  /* Borders: darker for crisp outlines, light for subtle glow edges */
+  --border-soft: rgba(151, 138, 191, 0.28);
+  --border-strong: rgba(193, 197, 208, 0.55);
+  --border-dark: var(--ink-900); /* strong outline on surfaces */
+
+  /* Reusable depth shadows (dark navy, on-palette) */
+  --shadow-sm: 0 2px 6px rgba(5, 5, 26, 0.5);
+  --shadow-md: 0 6px 16px rgba(5, 5, 26, 0.55);
+  --shadow-lg: 0 12px 30px rgba(5, 5, 26, 0.65);
 }
 
 body {
@@ -46,9 +73,9 @@ body::before {
       180deg,
       var(--night-900) 0%,
       var(--night-900) 25%,
-      rgba(26, 17, 56, 0.85) 45%,
-      rgba(42, 26, 74, 0.45) 70%,
-      rgba(42, 26, 74, 0.1) 100%
+      rgba(11, 11, 47, 0.85) 45%,
+      rgba(11, 11, 47, 0.45) 70%,
+      rgba(11, 11, 47, 0.1) 100%
     ),
     url('./assets/city_landscape.jpg');
   background-repeat: no-repeat, no-repeat;
@@ -58,18 +85,27 @@ body::before {
 }
 
 button {
-  background-color: var(--purple-500);
+  background-color: var(--btn);
   color: var(--text);
-  border: none;
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.15s ease;
 }
 
 button:hover {
-  background-color: var(--purple-400);
+  background-color: var(--btn-hover);
   color: white;
+  box-shadow: var(--shadow-md);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Visible keyboard focus for accessibility (Milestone 7). */

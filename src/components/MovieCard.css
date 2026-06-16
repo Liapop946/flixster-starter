@@ -4,25 +4,25 @@
   display: flex;
   flex-direction: column;
   padding: 0;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--border-dark);
   border-radius: 14px;
   overflow: hidden;
-  background-color: var(--card-surface); /* lighter purple so cards pop */
+  background-color: var(--card-surface);
   color: var(--text);
   text-align: left;
   cursor: pointer;
   font-family: inherit;
-  box-shadow: 0 6px 18px rgba(8, 4, 24, 0.45);
+  /* dark navy depth shadow so each card sits clearly above the background */
+  box-shadow: var(--shadow-md);
   transition: transform 0.25s ease, box-shadow 0.25s ease,
     border-color 0.25s ease;
 }
 
 .movie-card:hover {
   transform: translateY(-6px);
-  border-color: var(--border-strong);
-  /* warm glow, like a window lighting up */
-  box-shadow: 0 12px 28px rgba(8, 4, 24, 0.6),
-    0 0 18px rgba(180, 140, 255, 0.35);
+  /* lift higher with a deeper shadow + accent edge glow */
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg), 0 0 18px var(--accent-soft);
 }
 
 .movie-card__poster {

@@ -12,35 +12,44 @@
   padding: 0.5rem 0.9rem;
   font-size: 0.95rem;
   color: var(--text);
-  background-color: var(--plum-700);
-  border: 1px solid var(--border-soft);
+  background-color: var(--ink-800);
+  border: none;
   border-radius: 10px;
   outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.25s ease;
 }
 
 .search-bar__input::placeholder {
   color: var(--text-dim);
 }
 
-.search-bar__input:focus {
-  border-color: var(--border-strong);
-  box-shadow: 0 0 14px rgba(180, 140, 255, 0.35);
+.search-bar__input:focus,
+.search-bar__input:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-md), 0 0 14px var(--accent-soft);
 }
 
 .search-bar__button {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
+  border: none;
   border-radius: 10px;
+  /* lighter accent so the Search button pops against the header */
+  background-color: var(--btn-accent);
+}
+
+.search-bar__button:hover {
+  background-color: var(--btn-accent-hover);
 }
 
 .search-bar__button--secondary {
-  background-color: transparent;
-  border: 1px solid var(--border-soft);
+  background-color: var(--ink-800);
+  border: none;
 }
 
 .search-bar__button--secondary:hover {
-  background-color: var(--purple-500);
+  background-color: var(--btn);
 }
 
 @media (max-width: 640px) {

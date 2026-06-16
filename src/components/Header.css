@@ -7,8 +7,12 @@
   flex-wrap: wrap;
   gap: 1rem 1.5rem;
   padding: 1.25rem 1.75rem;
-  border-bottom: 1px solid var(--border-soft);
+  border-bottom: 2px solid var(--border-dark);
   background-color: var(--card-surface);
+  /* sit the header bar above the page with a dark drop shadow */
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 10;
 }
 
 .header__brand {
@@ -21,7 +25,7 @@
   font-weight: 800;
   letter-spacing: 0.02em;
   color: var(--text);
-  text-shadow: 0 0 18px rgba(180, 140, 255, 0.45);
+  text-shadow: 0 0 18px var(--accent-soft);
 }
 
 .header__tagline {

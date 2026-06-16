@@ -3,18 +3,18 @@
   margin-top: 2rem;
   padding: 1.5rem 1rem 2rem;
   text-align: center;
-  border-top: 1px solid rgba(150, 120, 220, 0.18);
-  background-color: rgba(13, 8, 32, 0.5);
+  border-top: 1px solid var(--border-soft);
+  background-color: rgba(11, 11, 47, 0.5);
 }
 
 .footer__text {
   margin: 0.25rem 0;
   font-size: 0.85rem;
-  color: #9d8fc4;
+  color: var(--text-muted);
 }
 
 .footer__link {
-  color: #c4a5ff;
+  color: var(--lilac-200);
   text-decoration: none;
   font-weight: 600;
 }
