@@ -1,6 +1,12 @@
+// ============================================================
+// IMPORTS
+// ============================================================
 import MovieCard from './MovieCard'
 import './MovieList.css'
 
+// ============================================================
+// COMPONENT
+// ============================================================
 const MovieList = ({
   movies,
   onCardClick,
@@ -9,6 +15,7 @@ const MovieList = ({
   isLoading,
   error,
 }) => {
+  // --- Status states: error / loading / empty ---
   if (error) {
     return <p className="movie-list__status movie-list__status--error">{error}</p>
   }
@@ -21,6 +28,7 @@ const MovieList = ({
     return <p className="movie-list__status">No movies to show.</p>
   }
 
+  // --- Render: grid + load-more ---
   return (
     <>
       <div className="movie-list">

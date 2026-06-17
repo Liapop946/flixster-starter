@@ -1,5 +1,8 @@
-/* Site palette: navy → lavender ramp.
-   #0b0b2f  #47589e  #656291  #978abf  #c1c5d0 */
+/* ============================================================
+   THEME TOKENS — CSS custom properties (palette, shadows)
+   Site palette: navy → lavender ramp.
+   #0b0b2f  #47589e  #656291  #978abf  #c1c5d0
+   ============================================================ */
 :root {
   /* Backgrounds / deepest surfaces */
   --night-900: #0b0b2f;
@@ -17,8 +20,9 @@
   --btn-hover: #45456a;
   /* Lighter lavender for the primary search button so it stands out from
      the header surface instead of blending in. */
-  --btn-accent: #6f6aa3;
-  --btn-accent-hover: #847ec0;
+  /* Darkened so #dfe3ee button text clears WCAG AA 4.5:1 (was #6f6aa3 ≈3.8:1). */
+  --btn-accent: #5a5590; /* ≈5.2:1 with --text */
+  --btn-accent-hover: #645d96; /* ≈4.6:1, slightly lighter on hover */
 
   /* Darker palette-derived tones for outlines + depth */
   --ink-900: #05051a; /* darkest — borders & deep shadows */
@@ -51,6 +55,9 @@
   --shadow-lg: 0 12px 30px rgba(5, 5, 26, 0.65);
 }
 
+/* ============================================================
+   BASE — body & background skyline
+   ============================================================ */
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -84,6 +91,9 @@ body::before {
   background-color: var(--night-900);
 }
 
+/* ============================================================
+   GLOBAL ELEMENTS — buttons & focus styles
+   ============================================================ */
 button {
   background-color: var(--btn);
   color: var(--text);

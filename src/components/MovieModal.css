@@ -1,5 +1,8 @@
-/* MovieModal — centered overlay with a dark, semi-transparent backdrop,
-   styled to match the cozy city-skyline-at-night theme. */
+/* ============================================================
+   OVERLAY & MODAL SHELL
+   MovieModal — centered overlay with a dark, semi-transparent backdrop,
+   styled to match the cozy city-skyline-at-night theme.
+   ============================================================ */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -53,8 +56,11 @@
   color: var(--rose);
 }
 
-/* Backdrop blends into the modal: the image is masked to fade at the bottom
-   and a matching gradient overlay melts it into the body color. */
+/* ============================================================
+   BACKDROP IMAGE
+   Backdrop blends into the modal: the image is masked to fade at the bottom
+   and a matching gradient overlay melts it into the body color.
+   ============================================================ */
 .modal__backdrop-wrap {
   position: relative;
   width: 100%;
@@ -81,7 +87,10 @@
   );
 }
 
-/* Pull the body up so it overlaps the faded edge of the backdrop. */
+/* ============================================================
+   BODY — title, meta, genres, overview
+   Pull the body up so it overlaps the faded edge of the backdrop.
+   ============================================================ */
 .modal__body {
   position: relative;
   margin-top: -3rem;
@@ -133,7 +142,10 @@
   color: var(--text);
 }
 
-/* AI watch recommendation — softly highlighted card with a neon edge. */
+/* ============================================================
+   AI WATCH RECOMMENDATION
+   AI watch recommendation — softly highlighted card with a neon edge.
+   ============================================================ */
 .modal__insight {
   margin: 0 0 1.5rem;
   padding: 1rem 1.2rem;
@@ -160,7 +172,10 @@
   font-style: italic;
 }
 
-/* Responsive 16:9 trailer frame. */
+/* ============================================================
+   TRAILER
+   Responsive 16:9 trailer frame.
+   ============================================================ */
 .modal__trailer-frame {
   position: relative;
   width: 100%;
@@ -187,6 +202,9 @@
   border-radius: 12px;
 }
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 600px) {
   .modal__body {
     padding: 0 1.25rem 1.75rem;

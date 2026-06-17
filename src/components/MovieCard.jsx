@@ -1,10 +1,19 @@
+// ============================================================
+// IMPORTS
+// ============================================================
 import './MovieCard.css'
 
+// ============================================================
+// CONFIG & CONSTANTS
+// ============================================================
 const POSTER_BASE = 'https://image.tmdb.org/t/p/w500'
 // Shown when a movie has no poster_path so the grid never breaks.
 const FALLBACK_POSTER =
   'https://placehold.co/500x750/2a1a4a/d6c7ff?text=No+Poster'
 
+// ============================================================
+// COMPONENT
+// ============================================================
 const MovieCard = ({ movie, onClick }) => {
   const { title, poster_path, vote_average } = movie
 

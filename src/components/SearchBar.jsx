@@ -1,10 +1,18 @@
+// ============================================================
+// IMPORTS
+// ============================================================
 import { useState } from 'react'
 import './SearchBar.css'
 
+// ============================================================
+// COMPONENT
+// ============================================================
 const SearchBar = ({ onSearch, onNowPlaying }) => {
+  // --- State ---
   // Controlled input — React owns the value via this local state.
   const [inputValue, setInputValue] = useState('')
 
+  // --- Event handlers ---
   const handleSubmit = (e) => {
     e.preventDefault()
     const query = inputValue.trim()
@@ -12,11 +20,14 @@ const SearchBar = ({ onSearch, onNowPlaying }) => {
     onSearch(query)
   }
 
-  const handleNowPlaying = () => {
+  // Clear empties the input AND clears the search results from the grid,
+  // restoring the full Now Playing list.
+  const handleClear = () => {
     setInputValue('')
     onNowPlaying()
   }
 
+  // --- Render ---
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
       <input
@@ -32,9 +43,9 @@ const SearchBar = ({ onSearch, onNowPlaying }) => {
       <button
         className="search-bar__button search-bar__button--secondary"
         type="button"
-        onClick={handleNowPlaying}
+        onClick={handleClear}
       >
-        Now Playing
+        Clear
       </button>
     </form>
   )

@@ -1,3 +1,6 @@
+// ============================================================
+// IMPORTS
+// ============================================================
 import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
@@ -5,6 +8,9 @@ import Footer from './components/Footer'
 import MovieList from './components/MovieList'
 import MovieModal from './components/MovieModal'
 
+// ============================================================
+// CONFIG & CONSTANTS
+// ============================================================
 const API_KEY = import.meta.env.VITE_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
 
@@ -20,6 +26,9 @@ const DISCOVER_SORT = {
   rating: 'vote_average.desc', // highest rated first
 }
 
+// ============================================================
+// HELPERS — URL building & sorting
+// ============================================================
 const fmtDate = (d) => d.toISOString().slice(0, 10)
 
 // Build the right endpoint for the current mode + sort option.
@@ -53,6 +62,17 @@ const buildUrl = (mode, query, page, sortOption) => {
   return url
 }
 
+// Normalize a title for A–Z sorting: drop leading articles isn't needed, but
+// strip everything that isn't a letter/number so titles like "[REC]", "'71",
+// or "¡Three Amigos!" sort by their first real character, not punctuation.
+const titleSortKey = (title = '') =>
+  title
+    .normalize('NFD') // split accented chars (é → e + combining mark) ...
+    .replace(/[̀-ͯ]/g, '') // ... and drop the accent marks
+    .replace(/[^a-zA-Z0-9 ]/g, '') // drop remaining special characters
+    .trim()
+    .toLowerCase()
+
 // Client-side sort used only for SEARCH results (search has no server sort).
 // 'default' keeps API order. Returns a new array (never mutates the input).
 const sortMovies = (list, option) => {
@@ -66,12 +86,16 @@ const sortMovies = (list, option) => {
         return b.vote_average - a.vote_average
       case 'title':
       default:
-        return a.title.localeCompare(b.title)
+        return titleSortKey(a.title).localeCompare(titleSortKey(b.title))
     }
   })
 }
 
+// ============================================================
+// COMPONENT
+// ============================================================
 const App = () => {
+  // --- State ---
   const [movies, setMovies] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [mode, setMode] = useState('nowPlaying') // 'nowPlaying' | 'search'
@@ -82,6 +106,7 @@ const App = () => {
   const [selectedMovieId, setSelectedMovieId] = useState(null)
   const [sortOption, setSortOption] = useState('default')
 
+  // --- Data fetching ---
   // Single fetch effect: re-runs when the mode, query, page, or sort changes.
   // In Now Playing mode the API sorts server-side, so changing the sort is a
   // new request (from page 1) rather than a client-side reshuffle.
@@ -129,6 +154,7 @@ const App = () => {
     return () => controller.abort()
   }, [mode, searchQuery, page, sortOption])
 
+  // --- Event handlers ---
   const handleSearch = (query) => {
     // Reset list + page, then switch to search mode for the new query.
     setMovies([])
@@ -161,6 +187,7 @@ const App = () => {
     setSortOption(option)
   }
 
+  // --- Render ---
   return (
     <div className="App">
       <Header

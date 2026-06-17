@@ -1,5 +1,8 @@
-/* MovieCard — a cozy little movie poster tile that glows on hover,
-   like a lit window in a city skyline at night. */
+/* ============================================================
+   MOVIE CARD
+   MovieCard — a cozy little movie poster tile that glows on hover,
+   like a lit window in a city skyline at night.
+   ============================================================ */
 .movie-card {
   display: flex;
   flex-direction: column;

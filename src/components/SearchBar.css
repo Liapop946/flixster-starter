@@ -1,4 +1,7 @@
-/* SearchBar — compact control row inside the header's top-right cluster. */
+/* ============================================================
+   SEARCH BAR
+   SearchBar — compact control row inside the header's top-right cluster.
+   ============================================================ */
 .search-bar {
   display: flex;
   justify-content: flex-end;
@@ -52,13 +55,29 @@
   background-color: var(--btn);
 }
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 640px) {
+  /* Two-column grid: input + Search on row 1, Now Playing alone on row 2
+     (right-aligned), sitting just above the sort dropdown. */
   .search-bar {
-    justify-content: stretch;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
   }
 
   .search-bar__input {
-    flex: 1;
+    grid-column: 1;
     width: auto;
+  }
+
+  .search-bar__button {
+    grid-column: 2;
+  }
+
+  .search-bar__button--secondary {
+    grid-column: 2;
+    justify-self: end;
   }
 }

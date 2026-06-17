@@ -1,3 +1,6 @@
+/* ============================================================
+   APP SHELL — full-height column layout (header / main / footer)
+   ============================================================ */
 .App {
   text-align: center;
   display: flex;

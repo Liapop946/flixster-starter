@@ -1,10 +1,12 @@
-/* MovieList — responsive grid of movie cards.
+/* ============================================================
+   MOVIE GRID — responsive grid of movie cards.
    Breakpoints (cards per row):
      • Mobile   (< 600px):        2 cards
      • Tablet   (600–1023px):     4 cards
      • Desktop  (>= 1024px):      6 cards
    Mobile-first: the base rule below is the mobile layout; media queries
-   widen the grid (and bump up gaps/padding) at larger sizes. */
+   widen the grid (and bump up gaps/padding) at larger sizes.
+   ============================================================ */
 .movie-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* mobile: 2 cards per row */
@@ -32,6 +34,9 @@
   }
 }
 
+/* ============================================================
+   STATUS MESSAGES & LOAD-MORE
+   ============================================================ */
 .movie-list__status {
   padding: 3rem 1rem;
   text-align: center;

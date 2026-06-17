@@ -1,5 +1,11 @@
+// ============================================================
+// IMPORTS
+// ============================================================
 import './Sort.css'
 
+// ============================================================
+// CONFIG & CONSTANTS — available sort options
+// ============================================================
 const SORT_OPTIONS = [
   { value: 'default', label: 'Default' },
   { value: 'title', label: 'Title (A–Z)' },
@@ -7,6 +13,9 @@ const SORT_OPTIONS = [
   { value: 'rating', label: 'Vote Average (Highest)' },
 ]
 
+// ============================================================
+// COMPONENT
+// ============================================================
 const Sort = ({ sortOption, onSortChange }) => {
   return (
     <div className="sort">

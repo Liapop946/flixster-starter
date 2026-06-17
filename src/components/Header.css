@@ -1,5 +1,8 @@
-/* Header — brand on the left, controls (search + sort) clustered top-right,
-   so the header stays compact instead of a tall centered stack. */
+/* ============================================================
+   HEADER
+   Header — brand on the left, controls (search + sort) clustered top-right,
+   so the header stays compact instead of a tall centered stack.
+   ============================================================ */
 .header {
   display: flex;
   align-items: flex-start;
@@ -43,7 +46,10 @@
   margin-left: auto;
 }
 
-/* On narrow screens, let the controls span full width under the brand. */
+/* ============================================================
+   RESPONSIVE
+   On narrow screens, let the controls span full width under the brand.
+   ============================================================ */
 @media (max-width: 640px) {
   .header {
     padding: 1rem 1.25rem;

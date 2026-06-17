@@ -1,6 +1,12 @@
+// ============================================================
+// IMPORTS
+// ============================================================
 import { useEffect, useState } from 'react'
 import './MovieModal.css'
 
+// ============================================================
+// CONFIG & CONSTANTS
+// ============================================================
 const API_KEY = import.meta.env.VITE_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
 const BACKDROP_BASE = 'https://image.tmdb.org/t/p/original'
@@ -13,6 +19,9 @@ const OPENROUTER_MODEL = 'openrouter/free'
 const AI_FALLBACK =
   "We couldn't generate a recommendation for this one — check out the overview above!"
 
+// ============================================================
+// HELPERS — AI insight, trailer selection, formatting
+// ============================================================
 // Calls OpenRouter with the movie's context and returns a short watch
 // recommendation, or a friendly fallback string on any failure.
 const getMovieInsight = async (title, genres, overview) => {
@@ -70,7 +79,11 @@ const formatRuntime = (minutes) => {
   return h > 0 ? `${h}h ${m}m` : `${m}m`
 }
 
+// ============================================================
+// COMPONENT
+// ============================================================
 const MovieModal = ({ movieId, onClose }) => {
+  // --- State ---
   const [details, setDetails] = useState(null)
   const [trailer, setTrailer] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -78,6 +91,7 @@ const MovieModal = ({ movieId, onClose }) => {
   const [aiInsight, setAiInsight] = useState(null)
   const [loadingInsight, setLoadingInsight] = useState(false)
 
+  // --- Effects: data fetching & keyboard handling ---
   // Fetch details (with videos) whenever the selected movie changes.
   useEffect(() => {
     if (!movieId) return
@@ -144,6 +158,7 @@ const MovieModal = ({ movieId, onClose }) => {
     return () => document.removeEventListener('keydown', handleKey)
   }, [onClose])
 
+  // --- Render ---
   const backdropUrl = details?.backdrop_path
     ? `${BACKDROP_BASE}${details.backdrop_path}`
     : null

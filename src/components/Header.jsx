@@ -1,7 +1,13 @@
+// ============================================================
+// IMPORTS
+// ============================================================
 import SearchBar from './SearchBar'
 import Sort from './Sort'
 import './Header.css'
 
+// ============================================================
+// COMPONENT
+// ============================================================
 const Header = ({ onSearch, onNowPlaying, sortOption, onSortChange }) => {
   return (
     <header className="header">

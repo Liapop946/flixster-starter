@@ -1,4 +1,7 @@
-/* Sort — compact dropdown in the header's top-right control cluster. */
+/* ============================================================
+   SORT DROPDOWN
+   Sort — compact dropdown in the header's top-right control cluster.
+   ============================================================ */
 .sort {
   display: flex;
   align-items: center;
@@ -17,15 +20,17 @@
   font-size: 0.9rem;
   font-family: inherit;
   color: var(--text);
-  background-color: var(--plum-700);
-  border: 1px solid var(--border-soft);
+  background-color: var(--ink-800);
+  border: none;
   border-radius: 10px;
   cursor: pointer;
   outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.25s ease;
 }
 
-.sort__select:focus {
-  border-color: var(--border-strong);
-  box-shadow: 0 0 12px rgba(180, 140, 255, 0.3);
+.sort__select:focus,
+.sort__select:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-md), 0 0 12px var(--accent-soft);
 }
